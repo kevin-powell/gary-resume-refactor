@@ -1,0 +1,211 @@
+:root {
+  --clr-neutral-100: hsla(0, 0%, 100%, 1);
+  --clr-primary-800: hsla(229, 47%, 17%, 1);
+  --clr-primary-700: hsla(229, 43%, 20%, 1);
+  --clr-primary-400: hsla(230, 50%, 58%, 0.3);
+  --clr-primary-300: hsla(229, 36%, 39%, 1);
+  --clr-primary-200: hsla(229, 21%, 53%, 1);
+  --clr-accent-400: hsla(147, 93%, 43%, 1);
+  --clr-secondary-400: hsla(229, 78%, 60%, 1);
+
+  --ff-base: "Outfit", sans-serif;
+
+  --fw-regular: 300;
+  --fw-semi-bold: 400;
+  --fw-bold: 700;
+
+  --fs-200: 0.875rem;
+  --fs-300: 1rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.375rem;
+  --fs-600: 1.75rem;
+  --fs-700: clamp(2rem, 10vw - 0.5rem, 3.25rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--clr-primary-700);
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-base);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.main-grid {
+  --_aside-width: clamp(7.5rem, 20vw, 15rem);
+  --_main-width: 1fr;
+  --_gap-size: 10vw;
+
+  display: grid;
+  grid-template-columns: var(--_aside-width) var(--_main-width);
+  gap: var(--_gap-size);
+  grid-auto-flow: dense;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+main {
+  padding-block: 2rem;
+  grid-column: 2;
+  width: calc(100vw - var(--_gap-size) - var(--_aside-width));
+}
+
+aside {
+  grid-column: 1;
+  align-self: stretch;
+  display: flex;
+  justify-content: end;
+}
+
+.eyebrow {
+  color: var(--clr-secondary-400);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.page-title {
+  font-size: var(--fs-700);
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+.intro {
+  font-size: var(--fs-500);
+  max-width: 45ch;
+}
+
+.job-experience {
+  display: grid;
+  justify-content: start;
+  gap: 1rem;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  position: relative;
+  padding-block: 2rem;
+  scrollbar-color: var(--clr-accent-400) var(--clr-primary-800);
+}
+
+.job-experience::-webkit-scrollbar {
+  height: 0.75rem;
+}
+.job-experience::-webkit-scrollbar-track {
+  background-color: var(--clr-primary-800);
+  border-radius: 100vw;
+}
+.job-experience::-webkit-scrollbar-thumb {
+  background-color: var(--clr-accent-400);
+  border-radius: 100vw;
+}
+
+.job-experience::after {
+  content: "";
+  width: 50px;
+  background: transparent;
+}
+
+.job {
+  width: 28.5rem;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  background: var(--clr-primary-800);
+}
+
+.job * {
+  margin: 0;
+}
+
+.job:first-child::before {
+  content: "Current role";
+  position: absolute;
+  color: var(--clr-accent-400);
+  top: 0rem;
+  left: 0;
+}
+
+.year {
+  color: var(--clr-accent-400);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.2em;
+}
+
+.job-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.role {
+  font-size: var(--fs-600);
+  line-height: 1.2;
+}
+
+.company {
+  color: var(--clr-primary-200);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+}
+
+.icon-list {
+  height: 100%;
+  border-left: 1px solid var(--clr-primary-300);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  align-content: center;
+  gap: 3rem;
+}
+
+.icon-list > li {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.icon-list > li::after {
+  --_size: 0.5rem;
+
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  width: var(--_size);
+  transform: translateX(-50%);
+  aspect-ratio: 1;
+  outline: 0.5rem solid var(--clr-primary-400);
+  border-radius: 50%;
+  background: var(--clr-neutral-100);
+}
